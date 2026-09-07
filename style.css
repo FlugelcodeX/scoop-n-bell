@@ -1,0 +1,2564 @@
+/* =============================================================
+   CSS — SCOOP N BELL ICE CREAM
+   Tier 2 Professional Website
+
+   The goal:
+   Pink + creamy + chocolate + playful.
+   Basically: the website equivalent of ordering "one more scoop."
+   ============================================================= */
+
+/* =============================================================
+   01. ROOT VARIABLES
+   ============================================================= */
+
+:root {
+  --pink: #ef6f9e;
+  --pink-dark: #d94e80;
+  --pink-light: #fff0f6;
+
+  --cream: #fff9ee;
+  --cream-dark: #f4e7d0;
+
+  --chocolate: #70422f;
+  --chocolate-dark: #4b291d;
+
+  --brown-light: #a9674e;
+
+  --purple: #8064d9;
+
+  --text: #38272b;
+  --text-light: #735e64;
+
+  --white: #ffffff;
+
+  --border: rgba(56, 39, 43, 0.1);
+
+  --shadow: 0 20px 50px rgba(89, 47, 63, 0.12);
+
+  --shadow-small: 0 10px 30px rgba(89, 47, 63, 0.1);
+
+  --radius: 28px;
+
+  --container: 1180px;
+}
+
+/* =============================================================
+   02. RESET
+   ============================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+
+  background: var(--cream);
+
+  color: var(--text);
+
+  line-height: 1.7;
+
+  overflow-x: hidden;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+.container {
+  width: min(calc(100% - 40px), var(--container));
+
+  margin-inline: auto;
+}
+
+/* =============================================================
+   03. TYPOGRAPHY
+   ============================================================= */
+
+h1,
+h2,
+h3,
+.logo {
+  font-family: "Baloo 2", cursive;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+
+  line-height: 0.9;
+
+  letter-spacing: -3px;
+}
+
+h2 {
+  font-size: clamp(2.7rem, 5vw, 4.5rem);
+
+  line-height: 0.95;
+
+  letter-spacing: -2px;
+}
+
+h2 span,
+h1 span {
+  display: block;
+
+  color: var(--pink);
+}
+
+.eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 15px;
+
+  color: var(--pink-dark);
+
+  font-size: 0.8rem;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+/* =============================================================
+   04. HEADER
+   ============================================================= */
+
+.header {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  z-index: 1000;
+
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  background: rgba(255, 249, 238, 0.94);
+
+  backdrop-filter: blur(16px);
+
+  box-shadow: 0 5px 30px rgba(70, 35, 47, 0.08);
+}
+
+.navbar {
+  min-height: 90px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+/* LOGO */
+
+.logo {
+  position: relative;
+
+  display: inline-flex;
+
+  flex-direction: column;
+
+  line-height: 0.75;
+
+  font-size: 1.7rem;
+
+  font-weight: 800;
+}
+
+.logo-img {
+  height: 58px;
+
+  width: auto;
+
+  display: block;
+}
+
+.logo-scoop {
+  color: var(--chocolate);
+}
+
+.logo-bell {
+  color: var(--pink);
+
+  margin-left: 14px;
+}
+
+.logo small {
+  margin-top: 9px;
+
+  margin-left: 15px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 0.43rem;
+
+  letter-spacing: 3px;
+
+  color: var(--chocolate);
+}
+
+/* NAV */
+
+.nav-menu {
+  display: flex;
+
+  align-items: center;
+
+  gap: 28px;
+}
+
+.nav-link {
+  position: relative;
+
+  font-size: 0.82rem;
+
+  font-weight: 600;
+
+  color: var(--text-light);
+
+  transition: color 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--pink-dark);
+}
+
+.nav-link:not(.nav-cta)::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -6px;
+
+  width: 0;
+
+  height: 2px;
+
+  border-radius: 5px;
+
+  background: var(--pink);
+
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-cta {
+  padding: 11px 20px;
+
+  border-radius: 100px;
+
+  color: var(--white);
+
+  background: var(--pink);
+}
+
+.nav-cta:hover {
+  color: var(--white);
+
+  background: var(--pink-dark);
+}
+
+/* MOBILE MENU */
+
+.menu-toggle {
+  display: none;
+
+  width: 45px;
+  height: 45px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: var(--pink-light);
+
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+
+  width: 20px;
+  height: 2px;
+
+  margin: 4px auto;
+
+  background: var(--chocolate);
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* =============================================================
+   05. HERO
+   ============================================================= */
+
+.hero {
+  position: relative;
+
+  min-height: 850px;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  padding-top: 100px;
+
+  background:
+    radial-gradient(
+      circle at 15% 30%,
+      rgba(255, 255, 255, 0.9),
+      transparent 25%
+    ),
+    linear-gradient(135deg, #fff7ee 0%, #ffe4ee 100%);
+}
+
+/* decorative top drips */
+
+.hero-drip {
+  position: absolute;
+
+  top: 0;
+
+  height: 25px;
+
+  border-radius: 0 0 30px 30px;
+
+  z-index: 1;
+}
+
+.hero-drip-pink {
+  left: 0;
+
+  width: 34%;
+
+  background: var(--pink);
+
+  box-shadow: 0 15px 0 rgba(217, 78, 128, 0.08);
+}
+
+.hero-drip-chocolate {
+  left: 30%;
+
+  width: 34%;
+
+  background: var(--chocolate);
+}
+
+.hero-drip-vanilla {
+  right: 0;
+
+  width: 32%;
+
+  background: #f7d875;
+}
+
+.hero-content {
+  position: relative;
+
+  z-index: 5;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    0.95fr;
+
+  align-items: center;
+
+  gap: 70px;
+}
+
+/* HERO COPY */
+
+.hero-copy {
+  max-width: 620px;
+}
+
+.hero-copy > p {
+  max-width: 550px;
+
+  margin-top: 28px;
+
+  color: var(--text-light);
+
+  font-size: 1.05rem;
+}
+
+.hero-copy > p strong {
+  color: var(--chocolate);
+}
+
+/* HERO BUTTONS */
+
+.hero-buttons {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 13px;
+
+  margin-top: 34px;
+}
+
+.btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  min-height: 52px;
+
+  padding: 0 25px;
+
+  border: 0;
+
+  border-radius: 100px;
+
+  font-size: 0.8rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-primary {
+  color: var(--white);
+
+  background: var(--pink);
+
+  box-shadow: 0 12px 25px rgba(239, 111, 158, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--pink-dark);
+
+  box-shadow: 0 16px 35px rgba(239, 111, 158, 0.35);
+}
+
+.btn-secondary {
+  color: var(--chocolate);
+
+  background: var(--white);
+
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  box-shadow: var(--shadow-small);
+}
+
+.btn-light {
+  color: var(--pink-dark);
+
+  background: var(--white);
+}
+
+.btn-large {
+  min-height: 58px;
+
+  padding-inline: 30px;
+}
+
+/* HERO STATS */
+
+.hero-stats {
+  display: flex;
+
+  gap: 30px;
+
+  margin-top: 48px;
+}
+
+.hero-stats div {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+}
+
+.hero-stats strong {
+  font-size: 1.3rem;
+}
+
+.hero-stats span {
+  font-size: 0.65rem;
+
+  font-weight: 600;
+
+  line-height: 1.3;
+
+  color: var(--text-light);
+}
+
+/* HERO VISUAL */
+
+.hero-visual {
+  position: relative;
+
+  min-height: 600px;
+
+  display: grid;
+
+  place-items: center;
+}
+
+.hero-circle {
+  position: absolute;
+
+  width: 510px;
+  height: 510px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle at 35% 30%, #fff, #ffd5e4 60%, #f3a1bc);
+
+  box-shadow: inset 0 -20px 50px rgba(182, 75, 111, 0.1);
+}
+
+/* ICE CREAM ART */
+
+.icecream-card {
+  position: relative;
+
+  z-index: 5;
+
+  width: 340px;
+
+  padding: 30px;
+
+  border-radius: 35px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 30px 60px rgba(107, 57, 73, 0.15);
+
+  transform: rotate(3deg);
+}
+
+.icecream-image {
+  position: relative;
+
+  height: 340px;
+
+  border-radius: 25px;
+
+  overflow: hidden;
+}
+
+.icecream-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+/* SCOOPS */
+
+.icecream-scoop {
+  position: absolute;
+
+  width: 155px;
+  height: 155px;
+
+  border-radius: 50%;
+
+  box-shadow:
+    inset -15px -20px 25px rgba(0, 0, 0, 0.08),
+    inset 15px 10px 15px rgba(255, 255, 255, 0.45);
+}
+
+.scoop-pink {
+  left: 0;
+
+  top: 85px;
+
+  background: radial-gradient(circle at 30% 25%, #ffd4e2, #f27aa5 65%, #dc527f);
+}
+
+.scoop-cream {
+  right: 0;
+
+  top: 85px;
+
+  background: radial-gradient(circle at 30% 25%, #fff, #f8e7c6 70%, #e8ca9a);
+}
+
+.scoop-brown {
+  left: 93px;
+
+  top: 0;
+
+  background: radial-gradient(circle at 30% 25%, #b97d5e, #70422f 65%, #4b291d);
+}
+
+/* CONE */
+
+.cone {
+  position: absolute;
+
+  left: 112px;
+  top: 155px;
+
+  width: 115px;
+  height: 185px;
+
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 15px,
+      rgba(112, 66, 47, 0.2) 16px 18px
+    ),
+    linear-gradient(135deg, #e5ad65, #c77d38);
+
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+
+  filter: drop-shadow(0 15px 15px rgba(74, 39, 28, 0.2));
+}
+
+.icecream-card-text {
+  text-align: center;
+}
+
+.icecream-card-text span {
+  display: block;
+
+  font-size: 0.65rem;
+
+  color: var(--text-light);
+}
+
+.icecream-card-text strong {
+  font-family: "Baloo 2", cursive;
+
+  font-size: 1.5rem;
+
+  color: var(--pink-dark);
+}
+
+/* FLOATING CARDS */
+
+.floating-card {
+  position: absolute;
+
+  z-index: 10;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 13px 17px;
+
+  border-radius: 17px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  box-shadow: var(--shadow-small);
+}
+
+.floating-card span {
+  display: grid;
+
+  place-items: center;
+
+  width: 37px;
+  height: 37px;
+
+  border-radius: 12px;
+
+  background: var(--pink-light);
+}
+
+.floating-card strong {
+  display: block;
+
+  font-size: 0.75rem;
+}
+
+.floating-card small {
+  display: block;
+
+  font-size: 0.55rem;
+
+  color: var(--text-light);
+}
+
+.floating-card-top {
+  top: 90px;
+  right: 10px;
+
+  transform: rotate(5deg);
+}
+
+.floating-card-bottom {
+  bottom: 80px;
+  left: 0;
+
+  transform: rotate(-5deg);
+}
+
+/* SPRINKLES */
+
+.floating-sprinkle {
+  position: absolute;
+
+  width: 35px;
+  height: 7px;
+
+  border-radius: 20px;
+
+  z-index: 2;
+
+  background: var(--pink);
+}
+
+.sprinkle-one {
+  top: 70px;
+  left: 90px;
+
+  transform: rotate(-30deg);
+}
+
+.sprinkle-two {
+  right: 30px;
+  bottom: 170px;
+
+  background: var(--purple);
+
+  transform: rotate(45deg);
+}
+
+.sprinkle-three {
+  left: 80px;
+  bottom: 150px;
+
+  background: #e7b83e;
+
+  transform: rotate(65deg);
+}
+
+/* =============================================================
+   06. MARQUEE
+   ============================================================= */
+
+.marquee-section {
+  overflow: hidden;
+
+  padding: 15px 0;
+
+  background: var(--chocolate);
+
+  color: var(--white);
+}
+
+.marquee {
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+
+  align-items: center;
+
+  gap: 28px;
+
+  width: max-content;
+
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-track span {
+  font-family: "Baloo 2", cursive;
+
+  font-size: 1.25rem;
+
+  font-weight: 700;
+}
+
+.marquee-track i {
+  color: #f6a7c2;
+
+  font-style: normal;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* =============================================================
+   07. GENERAL SECTION
+   ============================================================= */
+
+.section {
+  padding: 120px 0;
+}
+
+.section-heading {
+  max-width: 650px;
+
+  margin-bottom: 60px;
+}
+
+.section-heading > p {
+  margin-top: 22px;
+
+  color: var(--text-light);
+}
+
+.section-heading.center {
+  margin-inline: auto;
+
+  text-align: center;
+}
+
+/* =============================================================
+   08. FLAVORS
+   ============================================================= */
+
+.flavors-section {
+  background: var(--white);
+}
+
+.flavor-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 24px;
+}
+
+.flavor-card {
+  overflow: hidden;
+
+  border-radius: var(--radius);
+
+  background: var(--cream);
+
+  box-shadow: 0 5px 0 rgba(112, 66, 47, 0.05);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.flavor-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: var(--shadow);
+}
+
+.flavor-art {
+  position: relative;
+
+  height: 270px;
+
+  overflow: hidden;
+
+  display: grid;
+
+  place-items: center;
+}
+
+.flavor-photo {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.4s ease;
+}
+
+.flavor-card:hover .flavor-photo {
+  transform: scale(1.06);
+}
+
+.flavor-strawberry .flavor-art {
+  background: #ffd9e7;
+}
+
+.flavor-chocolate .flavor-art {
+  background: #ead4c9;
+}
+
+.flavor-vanilla .flavor-art {
+  background: #fff0c8;
+}
+
+/* ART SCOOPS */
+
+.scoop-art {
+  position: relative;
+
+  width: 170px;
+  height: 170px;
+
+  border-radius: 50%;
+
+  box-shadow:
+    inset -20px -20px 30px rgba(0, 0, 0, 0.08),
+    10px 20px 30px rgba(80, 40, 40, 0.12);
+
+  transition: transform 0.4s ease;
+}
+
+.flavor-card:hover .scoop-art {
+  transform: translateY(-8px) rotate(-4deg);
+}
+
+.scoop-art-pink {
+  background: radial-gradient(circle at 30% 25%, #ffdbe7, #f071a0 65%, #d94d7d);
+}
+
+.scoop-art-brown {
+  background: radial-gradient(circle at 30% 25%, #b97e5e, #70422f 65%, #4c2a1f);
+}
+
+.scoop-art-cream {
+  background: radial-gradient(circle at 30% 25%, #fff, #f8e7c2 70%, #e3c58f);
+}
+
+/* SPRINKLES */
+
+.sprinkle {
+  position: absolute;
+
+  width: 28px;
+  height: 6px;
+
+  border-radius: 10px;
+
+  background: var(--white);
+}
+
+.s1 {
+  top: 70px;
+  left: 35%;
+
+  transform: rotate(35deg);
+}
+
+.s2 {
+  right: 25%;
+  top: 120px;
+
+  transform: rotate(-25deg);
+}
+
+.s3 {
+  left: 27%;
+  bottom: 70px;
+
+  background: #8064d9;
+
+  transform: rotate(60deg);
+}
+
+/* CHOCOLATE */
+
+.choco-chip {
+  position: absolute;
+
+  width: 12px;
+  height: 18px;
+
+  border-radius: 4px;
+
+  background: #432319;
+}
+
+.c1 {
+  top: 70px;
+  left: 35%;
+
+  transform: rotate(30deg);
+}
+
+.c2 {
+  right: 31%;
+  top: 120px;
+
+  transform: rotate(-20deg);
+}
+
+.c3 {
+  left: 40%;
+  bottom: 75px;
+
+  transform: rotate(60deg);
+}
+
+/* VANILLA */
+
+.vanilla-sprinkle {
+  position: absolute;
+
+  width: 30px;
+  height: 5px;
+
+  border-radius: 10px;
+
+  background: #d69e57;
+}
+
+.v1 {
+  top: 75px;
+  left: 34%;
+
+  transform: rotate(20deg);
+}
+
+.v2 {
+  right: 30%;
+  bottom: 80px;
+
+  transform: rotate(-30deg);
+}
+
+/* FLAVOR INFO */
+
+.flavor-info {
+  padding: 27px;
+}
+
+.flavor-tag {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  padding: 4px 10px;
+
+  border-radius: 100px;
+
+  background: var(--pink-light);
+
+  color: var(--pink-dark);
+
+  font-size: 0.6rem;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+}
+
+.flavor-info h3 {
+  font-size: 1.8rem;
+}
+
+.flavor-info p {
+  margin-top: 5px;
+
+  color: var(--text-light);
+
+  font-size: 0.78rem;
+}
+
+.flavor-button {
+  margin-top: 18px;
+
+  border: 0;
+
+  background: none;
+
+  color: var(--pink-dark);
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+/* NOTE */
+
+.flavor-note {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 35px;
+
+  padding: 20px 25px;
+
+  border-radius: 18px;
+
+  background: var(--pink-light);
+}
+
+.flavor-note > span {
+  font-size: 1.5rem;
+}
+
+.flavor-note p {
+  font-size: 0.75rem;
+
+  color: var(--text-light);
+}
+
+.flavor-note strong {
+  color: var(--pink-dark);
+}
+
+/* =============================================================
+   09. ABOUT
+   ============================================================= */
+
+.about-section {
+  background: var(--cream);
+}
+
+.about-grid {
+  display: grid;
+
+  grid-template-columns:
+    0.9fr
+    1fr;
+
+  align-items: center;
+
+  gap: 100px;
+}
+
+/* ABOUT IMAGE */
+
+.about-visual {
+  position: relative;
+}
+
+.about-frame {
+  padding: 12px;
+
+  border-radius: 35px;
+
+  background: var(--white);
+
+  box-shadow: var(--shadow);
+
+  transform: rotate(-3deg);
+}
+
+.about-photo-placeholder {
+  min-height: 500px;
+
+  overflow: hidden;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 25px;
+
+  background: linear-gradient(145deg, #ffc9dc, #f47ca5);
+}
+
+.about-photo-placeholder img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+/* SHOP ILLUSTRATION */
+
+.shop-window {
+  position: relative;
+
+  width: 80%;
+
+  height: 65%;
+
+  border-radius: 15px 15px 5px 5px;
+
+  background: #fff7ef;
+
+  box-shadow: 0 20px 35px rgba(100, 44, 59, 0.18);
+}
+
+.shop-heart {
+  position: absolute;
+
+  top: 25px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  color: #e44e78;
+
+  font-size: 2rem;
+}
+
+.shop-sign {
+  position: absolute;
+
+  top: 75px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  padding: 12px 20px;
+
+  border-radius: 50%;
+
+  background: var(--pink);
+
+  color: var(--white);
+
+  font-family: "Baloo 2", cursive;
+
+  font-size: 1.2rem;
+
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.shop-sign small {
+  display: block;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 0.35rem;
+
+  letter-spacing: 2px;
+}
+
+.shop-counter {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 35%;
+
+  background: linear-gradient(#fff, #f6e5d7);
+
+  border-top: 7px solid var(--pink);
+}
+
+.shop-scoop {
+  position: absolute;
+
+  z-index: 2;
+
+  bottom: 85px;
+
+  width: 70px;
+  height: 70px;
+
+  border-radius: 50%;
+}
+
+.scoop-a {
+  left: 23%;
+
+  background: #f17ba3;
+}
+
+.scoop-b {
+  left: 43%;
+
+  background: #f5e2bd;
+}
+
+.scoop-c {
+  right: 20%;
+
+  background: #75422e;
+}
+
+.about-badge {
+  position: absolute;
+
+  right: -25px;
+  bottom: 35px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 20px 25px;
+
+  border-radius: 20px;
+
+  background: var(--chocolate);
+
+  color: var(--white);
+
+  transform: rotate(4deg);
+
+  box-shadow: var(--shadow);
+}
+
+.about-badge strong {
+  font-family: "Baloo 2", cursive;
+
+  font-size: 1.5rem;
+
+  color: #ffc0d5;
+}
+
+.about-badge span {
+  font-size: 0.55rem;
+}
+
+/* ABOUT CONTENT */
+
+.about-content > p {
+  max-width: 580px;
+
+  margin-top: 22px;
+
+  color: var(--text-light);
+
+  font-size: 0.9rem;
+}
+
+.about-features {
+  display: grid;
+
+  gap: 15px;
+
+  margin-top: 32px;
+}
+
+.about-feature {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+.about-feature > span {
+  display: grid;
+
+  place-items: center;
+
+  width: 47px;
+  height: 47px;
+
+  flex: 0 0 47px;
+
+  border-radius: 15px;
+
+  background: var(--white);
+
+  box-shadow: var(--shadow-small);
+}
+
+.about-feature strong {
+  display: block;
+
+  font-size: 0.75rem;
+}
+
+.about-feature small {
+  display: block;
+
+  color: var(--text-light);
+
+  font-size: 0.6rem;
+}
+
+.text-link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 30px;
+
+  color: var(--pink-dark);
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+}
+
+.text-link span {
+  transition: transform 0.2s ease;
+}
+
+.text-link:hover span {
+  transform: translateX(5px);
+}
+
+/* =============================================================
+   10. PROMO
+   ============================================================= */
+
+.promo-section {
+  padding: 70px 0;
+
+  background: var(--white);
+}
+
+.promo-box {
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 420px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    0.7fr;
+
+  align-items: center;
+
+  padding: 70px;
+
+  border-radius: 40px;
+
+  background: linear-gradient(120deg, #e85d8c, #f58db1);
+
+  color: var(--white);
+
+  box-shadow: 0 30px 70px rgba(216, 78, 125, 0.2);
+}
+
+.promo-copy {
+  position: relative;
+
+  z-index: 5;
+}
+
+.promo-copy .eyebrow {
+  color: #ffe5ef;
+}
+
+.promo-copy h2 {
+  max-width: 600px;
+}
+
+.promo-copy h2 span {
+  color: #fff;
+}
+
+.promo-copy p {
+  max-width: 500px;
+
+  margin-top: 20px;
+
+  color: #fff0f6;
+
+  font-size: 0.9rem;
+}
+
+.promo-copy .btn {
+  margin-top: 28px;
+}
+
+/* PROMO ART */
+
+.promo-art {
+  position: relative;
+
+  min-height: 330px;
+}
+
+.promo-scoop {
+  position: absolute;
+
+  width: 140px;
+  height: 140px;
+
+  border-radius: 50%;
+
+  box-shadow: inset -15px -20px 20px rgba(0, 0, 0, 0.1);
+}
+
+.promo-scoop-one {
+  left: 20px;
+  bottom: 80px;
+
+  background: #f9e5bf;
+}
+
+.promo-scoop-two {
+  right: 10px;
+  bottom: 80px;
+
+  background: #71432f;
+}
+
+.promo-scoop-three {
+  left: 110px;
+  top: 15px;
+
+  background: #ffd0df;
+}
+
+.promo-cone {
+  position: absolute;
+
+  left: 120px;
+  bottom: 0;
+
+  width: 110px;
+  height: 190px;
+
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 14px,
+      rgba(112, 66, 47, 0.2) 15px 17px
+    ),
+    #d8954c;
+}
+
+.promo-spark {
+  position: absolute;
+
+  font-size: 2rem;
+
+  color: #ffe38c;
+}
+
+.spark-a {
+  top: 20px;
+  right: 50px;
+}
+
+.spark-b {
+  bottom: 100px;
+  left: 0;
+}
+
+.spark-c {
+  top: 130px;
+  right: 5px;
+}
+
+/* =============================================================
+   10b. BRANCHES
+   ============================================================= */
+
+.branches-section {
+  background: var(--cream);
+}
+
+.branches-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 30px;
+}
+
+.branch-card {
+  overflow: hidden;
+
+  border-radius: var(--radius);
+
+  background: var(--white);
+
+  box-shadow: var(--shadow-small);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.branch-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: var(--shadow);
+}
+
+.branch-map {
+  height: 220px;
+}
+
+.branch-map iframe {
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+
+  display: block;
+}
+
+.branch-info {
+  padding: 26px 28px 30px;
+}
+
+.branch-info h3 {
+  font-family: "Baloo 2", cursive;
+
+  font-size: 1.3rem;
+
+  color: var(--chocolate);
+}
+
+.branch-info p {
+  margin-top: 6px;
+
+  color: var(--text-light);
+}
+
+.branch-link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 18px;
+
+  font-weight: 600;
+
+  color: var(--pink-dark);
+
+  transition: gap 0.3s ease;
+}
+
+.branch-link:hover {
+  gap: 14px;
+}
+
+@media (max-width: 900px) {
+  .branches-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================================
+   11. FRANCHISE
+   ============================================================= */
+
+.franchise-section {
+  background: var(--cream);
+}
+
+.franchise-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  align-items: center;
+
+  gap: 90px;
+}
+
+.franchise-image-wrapper {
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  background: var(--pink-light);
+
+  box-shadow: var(--shadow);
+}
+
+.franchise-image-wrapper img {
+  width: 100%;
+
+  transition: transform 0.5s ease;
+}
+
+.franchise-image-wrapper:hover img {
+  transform: scale(1.03);
+}
+
+.franchise-content > p {
+  max-width: 550px;
+
+  margin-top: 25px;
+
+  color: var(--text-light);
+
+  font-size: 0.9rem;
+}
+
+.franchise-points {
+  display: grid;
+
+  gap: 18px;
+
+  margin: 30px 0;
+}
+
+.franchise-points div {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 12px;
+}
+
+.franchise-points span {
+  display: grid;
+
+  place-items: center;
+
+  width: 27px;
+  height: 27px;
+
+  flex: 0 0 27px;
+
+  border-radius: 50%;
+
+  background: var(--pink);
+
+  color: var(--white);
+
+  font-size: 0.7rem;
+
+  font-weight: 700;
+}
+
+.franchise-points p {
+  color: var(--text-light);
+
+  font-size: 0.72rem;
+}
+
+/* =============================================================
+   12. GALLERY
+   ============================================================= */
+
+.gallery-section {
+  background: var(--white);
+}
+
+.gallery-grid {
+  display: grid;
+
+  grid-template-columns:
+    1.4fr
+    1fr
+    1fr;
+
+  grid-auto-rows: 220px;
+
+  gap: 18px;
+}
+
+.gallery-card {
+  overflow: hidden;
+
+  border-radius: 25px;
+}
+
+.gallery-large {
+  grid-row: span 2;
+}
+
+.gallery-wide {
+  grid-column: span 2;
+}
+
+.gallery-photo {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.4s ease;
+}
+
+.gallery-card:hover .gallery-photo {
+  transform: scale(1.05);
+}
+
+.gallery-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  transition: transform 0.4s ease;
+}
+
+.gallery-card:hover .gallery-placeholder {
+  transform: scale(1.05);
+}
+
+.gallery-placeholder span {
+  font-size: 3.5rem;
+}
+
+.gallery-placeholder strong {
+  font-family: "Baloo 2", cursive;
+
+  font-size: 1.5rem;
+}
+
+.gallery-placeholder.pink {
+  background: linear-gradient(145deg, #f98eb2, #dc4e82);
+
+  color: var(--white);
+}
+
+.gallery-placeholder.cream {
+  background: #ffedc8;
+}
+
+.gallery-placeholder.brown {
+  background: #d4b2a2;
+
+  color: var(--white);
+}
+
+.gallery-placeholder.purple {
+  background: #c7b9ef;
+
+  color: var(--white);
+}
+
+.gallery-placeholder.colorful {
+  background: linear-gradient(90deg, #f58cb0, #f7d476, #9e87df);
+
+  color: var(--white);
+}
+
+/* =============================================================
+   13. CONTACT
+   ============================================================= */
+
+.contact-section {
+  padding: 100px 0;
+
+  background: linear-gradient(135deg, #fff0f6, #ffe6d2);
+}
+
+.contact-box {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 60px;
+
+  padding: 60px;
+
+  border-radius: 35px;
+
+  background: var(--white);
+
+  box-shadow: var(--shadow);
+}
+
+.contact-copy {
+  max-width: 650px;
+}
+
+.contact-copy p {
+  max-width: 530px;
+
+  margin-top: 20px;
+
+  color: var(--text-light);
+
+  font-size: 0.85rem;
+}
+
+.contact-actions {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+.email-link {
+  color: var(--pink-dark);
+
+  font-size: 0.68rem;
+
+  font-weight: 600;
+}
+
+/* =============================================================
+   14. FOOTER
+   ============================================================= */
+
+.footer {
+  background: var(--chocolate-dark);
+
+  color: var(--white);
+}
+
+.footer-grid {
+  display: grid;
+
+  grid-template-columns:
+    2fr
+    1fr
+    1fr
+    1.5fr;
+
+  gap: 50px;
+
+  padding: 75px 0;
+}
+
+.footer-logo .logo-img {
+  height: 64px;
+}
+
+.footer-logo .logo-scoop {
+  color: var(--white);
+}
+
+.footer-logo small {
+  color: #d9bbb0;
+}
+
+.footer-brand p {
+  margin-top: 20px;
+
+  color: #c7aaa1;
+
+  font-size: 0.7rem;
+}
+
+.footer-links {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.footer-links h4 {
+  margin-bottom: 8px;
+
+  font-family: "Baloo 2", cursive;
+
+  font-size: 1.1rem;
+
+  color: #ffc1d6;
+}
+
+.footer-links a {
+  width: fit-content;
+
+  color: #c7aaa1;
+
+  font-size: 0.68rem;
+
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--white);
+}
+
+.footer-bottom {
+  padding: 18px 0;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-bottom .container {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.footer-bottom p {
+  color: #a98a80;
+
+  font-size: 0.58rem;
+}
+
+/* =============================================================
+   15. BACK TO TOP
+   ============================================================= */
+
+.back-to-top {
+  position: fixed;
+
+  right: 25px;
+  bottom: 25px;
+
+  z-index: 500;
+
+  width: 48px;
+  height: 48px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: var(--pink);
+
+  color: var(--white);
+
+  font-size: 1.1rem;
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 25px rgba(239, 111, 158, 0.3);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(15px);
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease;
+}
+
+.back-to-top.show {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+/* =============================================================
+   16. SCROLL REVEAL
+   ============================================================= */
+
+.reveal {
+  opacity: 0;
+
+  transform: translateY(35px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* =============================================================
+   17. RESPONSIVE — TABLET
+   ============================================================= */
+
+@media (max-width: 1000px) {
+  .hero {
+    min-height: auto;
+
+    padding: 150px 0 90px;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+  }
+
+  .hero-copy {
+    max-width: 700px;
+
+    margin-inline: auto;
+  }
+
+  .hero-copy > p {
+    margin-inline: auto;
+  }
+
+  .hero-buttons,
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    min-height: 550px;
+  }
+
+  .flavor-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .flavor-card:last-child {
+    grid-column: 1 / -1;
+
+    max-width: 500px;
+
+    width: 100%;
+
+    margin-inline: auto;
+  }
+
+  .about-grid,
+  .franchise-grid {
+    grid-template-columns: 1fr;
+
+    gap: 60px;
+  }
+
+  .about-visual {
+    max-width: 600px;
+
+    margin-inline: auto;
+  }
+
+  .promo-box {
+    grid-template-columns: 1fr;
+  }
+
+  .promo-art {
+    position: absolute;
+
+    right: 20px;
+
+    bottom: -40px;
+
+    width: 400px;
+
+    opacity: 0.45;
+  }
+
+  .contact-box {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .contact-actions {
+    align-items: flex-start;
+  }
+}
+
+/* =============================================================
+   18. RESPONSIVE — MOBILE
+   ============================================================= */
+
+@media (max-width: 700px) {
+  .container {
+    width: min(calc(100% - 28px), var(--container));
+  }
+
+  .navbar {
+    min-height: 75px;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  /* MOBILE NAV */
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+
+    top: 75px;
+    left: 14px;
+    right: 14px;
+
+    padding: 25px;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 8px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 249, 238, 0.98);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow: var(--shadow);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(-15px);
+
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .nav-menu.open {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    padding: 12px 15px;
+
+    border-radius: 12px;
+  }
+
+  .nav-link:hover {
+    background: var(--pink-light);
+  }
+
+  .nav-link:not(.nav-cta)::after {
+    display: none;
+  }
+
+  .nav-cta {
+    text-align: center;
+  }
+
+  /* HERO */
+
+  .hero {
+    padding: 120px 0 60px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+
+    letter-spacing: -2px;
+  }
+
+  h2 {
+    font-size: 2.8rem;
+  }
+
+  .hero-copy > p {
+    font-size: 0.85rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  .hero-stats {
+    gap: 18px;
+
+    flex-wrap: wrap;
+  }
+
+  .hero-visual {
+    min-height: 450px;
+  }
+
+  .hero-circle {
+    width: 330px;
+    height: 330px;
+  }
+
+  .icecream-card {
+    width: 270px;
+
+    padding: 20px;
+  }
+
+  .icecream-image {
+    height: 260px;
+  }
+
+  .icecream-scoop {
+    width: 115px;
+    height: 115px;
+  }
+
+  .scoop-brown {
+    left: 77px;
+  }
+
+  .cone {
+    left: 82px;
+    top: 125px;
+
+    width: 90px;
+    height: 145px;
+  }
+
+  .floating-card {
+    transform: scale(0.8);
+  }
+
+  .floating-card-top {
+    right: -5px;
+  }
+
+  .floating-card-bottom {
+    left: -5px;
+  }
+
+  /* SECTIONS */
+
+  .section {
+    padding: 80px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 40px;
+  }
+
+  /* FLAVORS */
+
+  .flavor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flavor-card:last-child {
+    grid-column: auto;
+
+    max-width: none;
+  }
+
+  /* ABOUT */
+
+  .about-photo-placeholder {
+    min-height: 350px;
+  }
+
+  .about-badge {
+    right: 5px;
+
+    bottom: 20px;
+  }
+
+  /* PROMO */
+
+  .promo-section {
+    padding: 30px 0;
+  }
+
+  .promo-box {
+    min-height: 500px;
+
+    padding: 40px 25px;
+
+    border-radius: 28px;
+  }
+
+  .promo-art {
+    width: 330px;
+
+    right: -50px;
+
+    bottom: -20px;
+  }
+
+  /* FRANCHISE */
+
+  .franchise-grid {
+    gap: 40px;
+  }
+
+  /* GALLERY */
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+
+    grid-auto-rows: 180px;
+  }
+
+  .gallery-large {
+    grid-row: span 2;
+  }
+
+  .gallery-wide {
+    grid-column: span 2;
+  }
+
+  /* CONTACT */
+
+  .contact-section {
+    padding: 60px 0;
+  }
+
+  .contact-box {
+    padding: 35px 25px;
+
+    border-radius: 25px;
+  }
+
+  .contact-actions,
+  .contact-actions .btn {
+    width: 100%;
+  }
+
+  /* FOOTER */
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 35px;
+
+    padding: 55px 0;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom .container {
+    flex-direction: column;
+
+    text-align: center;
+  }
+}
+
+/* =============================================================
+   19. EXTRA SMALL MOBILE
+   ============================================================= */
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+  }
+
+  .hero-stats {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-stats div:last-child {
+    grid-column: 1 / -1;
+
+    justify-content: center;
+  }
+
+  .hero-circle {
+    width: 290px;
+    height: 290px;
+  }
+
+  .icecream-card {
+    width: 245px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-large,
+  .gallery-wide {
+    grid-column: auto;
+
+    grid-row: auto;
+  }
+}
